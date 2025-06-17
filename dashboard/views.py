@@ -158,8 +158,7 @@ def dictionary(request):
             audio = answer[0]['phonetics'][0].get('audio', '')
             definition = answer[0]['meanings'][0]['definitions'][0].get('definition', '')
             example = answer[0]['meanings'][0]['definitions'][0].get('example', 'No example found.')
-            synonyms = answer[0]['meanings'][0]['definitions'][0].get('synonyms', [])
-            context = {'form': form, 'input': text, 'phonetics': phonetics, 'audio': audio, 'definition': definition, 'example': example, 'synonyms': synonyms}
+            context = {'form': form, 'input': text, 'phonetics': phonetics, 'audio': audio, 'definition': definition, 'example': example}
         except:
             context = {'form': form, 'input': ''}
         return render(request, 'dashboard/dictionary.html', context)

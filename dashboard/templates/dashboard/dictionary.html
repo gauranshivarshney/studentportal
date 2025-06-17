@@ -45,14 +45,6 @@
             <h5 class="text-secondary">💡 Example:</h5>
             <p class="fs-5 fst-italic text-dark">{{example}}</p>
         </div>
-        <div>
-            <h5 class="text-secondary">🔁 Synonyms:</h5>
-            <p class="fs-5">
-                {% for synonym in synonyms %}
-                    {{synonym}}
-                {% endfor %}
-            </p>
-        </div>
         {% else %}
         <div class="text-center text-danger mt-4">
             <h4>⚠️ Sorry, API request limit exceeded</h4>
