@@ -35,14 +35,14 @@
                             Options
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item {% if request.path == '/todo/' %}active{% endif %}" href="{% url 'todo' %}">To Do</a>
+                                <a class="dropdown-item {% if request.path == '/notes/' %}active{% endif %}" href="{% url 'notes' %}">Notes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item {% if request.path == '/homework/' %}active{% endif %}" href="{% url 'homework' %}">Homework</a>
                                 <a class="dropdown-item {% if request.path == '/books/' %}active{% endif %}" href="{% url 'books' %}">Books</a>
-                                <a class="dropdown-item {% if request.path == '/wiki/' %}active{% endif %}" href="{% url 'wiki' %}">Wikipedia</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item {% if request.path == '/dictionary' %}active{% endif %}" href="{% url 'dictionary' %}">Dictionary</a>
-                                <a class="dropdown-item {% if request.path == '/todo/' %}active{% endif %}" href="{% url 'todo' %}">To Do</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item {% if request.path == '/notes/' %}active{% endif %}" href="{% url 'notes' %}">Notes</a>
-                                <a class="dropdown-item {% if request.path == '/homework/' %}active{% endif %}" href="{% url 'homework' %}">Homework</a>
+                                <a class="dropdown-item {% if request.path == '/wiki/' %}active{% endif %}" href="{% url 'wiki' %}">Wikipedia</a>                            
                             </div>
                         </li>
                         <li class="nav-item">

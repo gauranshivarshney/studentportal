@@ -5,7 +5,11 @@
 
 <section class="container py-5">
     <div class="text-center mb-5">
-        <h2 class="fw-bold">📚 Your Study Hub</h2>
+        {% if user.is_authenticated %}
+            <h2 class="fw-bold">📚 {{user.username|capfirst}}'s Study Hub</h2>
+        {% else %}
+            <h2 class="fw-bold">📚 Yout Study Hub</h2>
+        {% endif %}
         <p class="lead text-muted">Everything you need in one place. Let’s be productive!</p>
     </div>
     <div class="row justify-content-center g-4">

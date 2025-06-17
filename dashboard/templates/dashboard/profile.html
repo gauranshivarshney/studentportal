@@ -33,12 +33,13 @@
                                     <th scope="row">{{ forloop.counter }}</th>
                                     <td>{{ todo.title }}</td>
                                     <td>
-                                        <a href="{% url 'update-todo' todo.id %}" class="text-decoration-none">
+                                        <form method="POST" action="{% url 'update-todo' todo.id %}" class="text-decoration-none">
+                                            {% csrf_token %}
                                             <div class="form-check d-flex align-items-center gap-2">
-                                                <input class="form-check-input" type="checkbox" {% if todo.is_finished %}checked{% endif %}>
+                                                <input class="form-check-input" type="checkbox" name="is_finished" {% if todo.is_finished %}checked{% endif %} onchange="this.form.submit();">
                                                 <label class="form-check-label">Mark as Completed</label>
                                             </div>
-                                        </a>
+                                        </form>
                                     </td>
                                     <td>
                                         <a href="{% url 'delete-todo' todo.id %}" class="text-danger" title="Delete">
@@ -82,12 +83,13 @@
                                     <td>{{ homework.description }}</td>
                                     <td>{{ homework.due }}</td>
                                     <td>
-                                        <a href="{% url 'update-homework' homework.id %}" class="text-decoration-none">
+                                        <form method="POST" action="{% url 'update-homework' homework.id %}" class="text-decoration-none">
+                                            {% csrf_token %}
                                             <div class="form-check d-flex align-items-center gap-2">
-                                                <input class="form-check-input" type="checkbox" {% if homework.is_finished %}checked{% endif %}>
+                                                <input class="form-check-input" type="checkbox" name="is_finished" {% if todo.is_finished %}checked{% endif %} onchange="this.form.submit();">
                                                 <label class="form-check-label">Mark as Completed</label>
                                             </div>
-                                        </a>
+                                        </form>
                                     </td>
                                     <td>
                                         <a href="{% url 'delete-homework' homework.id %}" class="text-danger" title="Delete">
