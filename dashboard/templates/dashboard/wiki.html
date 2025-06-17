@@ -1,0 +1,143 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<style>
+    .wiki-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding-top: 40px;
+    }
+
+    .wiki-header {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: #5C4E4E;
+    }
+
+    .wiki-subtitle {
+        color: #6c757d;
+        font-size: 1rem;
+        margin-bottom: 20px;
+    }
+
+    .wiki-card {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .wiki-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .wiki-options li {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .wiki-options li:hover {
+        background-color: #f1f1f1;
+        color: #007bff;
+    }
+
+    .btn-danger {
+        padding: 10px 30px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        transition: 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+    }
+
+    .wiki-link {
+        text-decoration: none;
+        color: #0d6efd;
+    }
+
+    .wiki-link:hover {
+        text-decoration: underline;
+    }
+
+    .wiki-summary {
+        font-size: 1rem;
+        color: #444;
+        text-align: justify;
+    }
+
+    .form-floating > .form-control {
+        border-radius: 12px;
+        padding: 1.2rem 1rem 0.5rem;
+        height: auto;
+    }
+
+    .form-floating label {
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+        color: #888;
+    }
+
+    .search-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .search-row .form-floating {
+        flex: 1;
+        min-width: 250px;
+    }
+</style>
+
+<div class="wiki-container text-center">
+    <h2 class="wiki-header">🔎 Wikipedia Search</h2>
+    <p class="wiki-subtitle">Type a topic below and get instant information from Wikipedia.</p>
+    <form method="post">
+        {% csrf_token %}
+        <div class="search-row">
+            <div class="form-floating">
+                {{ form.text|add_class:"form-control" }}
+                <label for="{{ form.text.id_for_label }}">Enter topic here...</label>
+            </div>
+            <button type="submit" class="btn btn-danger shadow">Search</button>
+        </div>
+    </form>
+    {% if error %}
+        <div class="alert alert-warning shadow-sm">{{ error }}</div>
+    {% endif %}
+    {% if options %}
+        <div class="wiki-card text-start">
+            <h4 class="mb-3">⚠️ Did you mean one of the following?</h4>
+            <ul class="list-group wiki-options">
+                {% for option in options %}
+                    <li class="list-group-item">{{ option }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if title %}
+        <div class="wiki-card mt-5 text-start">
+            <a href="{{link}}" class="wiki-link" target="_blank">
+                <h3 class="mb-1">{{title}}</h3>
+                <small>{{link}}</small>
+            </a>
+            <hr>
+            <p class="wiki-summary mt-3">{{details}}</p>
+        </div>
+    {% endif %}
+</div>
+
+{% endblock content %}

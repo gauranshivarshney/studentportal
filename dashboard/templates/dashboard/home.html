@@ -1,0 +1,96 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold">📚 Your Study Hub</h2>
+        <p class="lead text-muted">Everything you need in one place. Let’s be productive!</p>
+    </div>
+    <div class="row justify-content-center g-4">
+        <div class="col-md-3">
+            <a href="{% url 'notes' %}">
+                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/notes.jpeg' %}" alt="Notes image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            Notes
+                        </h5>
+                        <p class="text-muted small">Create Notes to refer them later.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'homework' %}">
+                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/homework.jpeg' %}" alt="Homework image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            Homework
+                        </h5>
+                        <p class="text-muted small">Add homeworks and assign them deadlines.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'todo' %}">
+                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/todo.jpg' %}" alt="Todo image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            To Do
+                        </h5>
+                        <p class="text-muted small">Add your to-do lists for your day and remove them as you finish.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="row justify-content-center g-4">
+        <div class="col-md-3 ">
+            <a href="{% url 'books' %}">
+                <div class="card mt-20 h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/books.jpg' %}" alt="Books image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            Books
+                        </h5>
+                        <p class="text-muted small">Browse books from a list of neatly organised book menu.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'dictionary' %}">
+                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/dict.jpg' %}" alt="Dictionary image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            Dictionary
+                        </h5>
+                        <p class="text-muted small">A vocabulary from a book is troubling you? No problem, enter the word, and the meaning will be displayed.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'wiki' %}">
+                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                    <img class="card-img-top" src="{% static 'images/wiki.jpg' %}" alt="Wikipedia image">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-semibold ">
+                            Wikipedia
+                        </h5>
+                        <p class="text-muted small">Search wikipedia to get fast results.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

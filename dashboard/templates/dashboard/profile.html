@@ -1,0 +1,112 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    .pro {
+        color: #5C4E4E;
+    }
+</style>
+
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h1 class="mb-4 fw-bold pro">Your Dashboard</h1>
+        <div class="card shadow mb-5">
+            <div class="card-body bg-light rounded-3">
+                {% if not todo_done and todos %}
+                    <h3 class="card-title mb-4">📋 Pending ToDos</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered rounded-3 overflow-hidden">
+                            <thead class="table-primary text-dark">
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for todo in todos %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ todo.title }}</td>
+                                    <td>
+                                        <a href="{% url 'update-todo' todo.id %}" class="text-decoration-none">
+                                            <div class="form-check d-flex align-items-center gap-2">
+                                                <input class="form-check-input" type="checkbox" {% if todo.is_finished %}checked{% endif %}>
+                                                <label class="form-check-label">Mark as Completed</label>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete-todo' todo.id %}" class="text-danger" title="Delete">
+                                            <i class="fa fa-trash fa-lg"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <h4 class="text-success">✅ All ToDos are completed!</h4>
+                {% endif %}
+                <a href="{% url 'todo' %}" class="btn btn-outline-primary mt-3">➕ Add New ToDo</a>
+            </div>
+        </div>
+        <div class="card shadow">
+            <div class="card-body bg-light text-white rounded-3">
+                {% if not homeworks_done and homeworks %}
+                    <h3 class="card-title mb-4 text-black">📚 Pending Homework</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <thead class="table-info text-dark">
+                                <tr>
+                                    <th>S.No.</th>
+                                    <th>Subject</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Due</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for homework in homeworks %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ homework.subject }}</td>
+                                    <td>{{ homework.title }}</td>
+                                    <td>{{ homework.description }}</td>
+                                    <td>{{ homework.due }}</td>
+                                    <td>
+                                        <a href="{% url 'update-homework' homework.id %}" class="text-decoration-none">
+                                            <div class="form-check d-flex align-items-center gap-2">
+                                                <input class="form-check-input" type="checkbox" {% if homework.is_finished %}checked{% endif %}>
+                                                <label class="form-check-label">Mark as Completed</label>
+                                            </div>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'delete-homework' homework.id %}" class="text-danger" title="Delete">
+                                            <i class="fa fa-trash fa-lg"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <h4 class="text-success">✅ All Homeworks are completed!</h4>
+                {% endif %}
+                <a href="{% url 'homework' %}" class="btn btn-outline-primary mt-3">➕ Add Homework</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock content %}

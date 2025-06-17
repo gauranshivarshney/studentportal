@@ -1,0 +1,66 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+    .register-container {
+        max-width: 500px;
+        margin: 50px auto;
+        background-color: #f9f9f9;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .register-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    .btn-custom {
+        background-color: #0d6efd;
+        color: white;
+        width: 100%;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: #0b5ed7;
+    }
+
+    .form-control {
+        border-radius: 8px;
+    }
+
+    .form-group label {
+        font-weight: 500;
+    } 
+
+    .login-link {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container register-container">
+  <form method="POST">
+    {% csrf_token %}
+    <legend class="register-title">Create Your Account</legend>
+    {{ form|crispy }}
+    <div class="form-group mt-3">
+      <button type="submit" class="btn btn-custom">Sign Up</button>
+    </div>
+  </form>
+  <div class="login-link">
+    <small class="text-muted">Already have an account?
+      <a href="{% url 'login' %}" class="text-primary fw-bold ms-2">Sign In</a>
+    </small>
+  </div>
+</div>
+
+{% endblock content %}

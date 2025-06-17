@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet|Quicksand|Barlow");
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    font-family: Barlow, Quicksand, Rubik, sans-serif, serif, 'Times New Roman', Times, serif !important;
+}
+
+.portal-title {
+    font-weight: bold;
+}
+
+.nav-heading {
+    font-weight: bold;
+}
+
+.custom-navbar {
+    background-color: #988686;
+}
+
+.title {
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none !important;
+    color: black;
+}
+
+.card-title {
+    font-weight: 800;
+}
+
+.hover-shadow:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+    transition: all 0.3s ease-in-out;
+}
+
+.text {
+    background-color: #384959;
+}
+
+.note {
+    background-color: #D1D0D0;
+}

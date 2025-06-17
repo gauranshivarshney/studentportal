@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<style>
+    .dict {
+        color: #5C4E4E;
+    }
+</style>
+
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <h2 class="fw-bold dict display-5">📖 Student Dictionary</h2>
+        <p class="text-muted fs-5">Enter any word to get the phonetics, definition, and example.</p>
+    </div>
+    <form method="post" class="row justify-content-center mb-4">
+        {% csrf_token %}
+        <div class="col-md-6 d-flex gap-2">
+            {{form.text|add_class:"form-control rounded-start-pill px-4 py-2 shadow-sm"}}
+            <input type="submit" class="btn btn-danger px-4 rounded-pill shadow-sm" value="Search">
+        </div>
+    </form>
+    <div class="card border-0 shadow rounded-4 p-4 bg-light">
+        {% if input %}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h3 class="fw-bold text-dark">🔤 Word: <span class="text-primary">{{input}}</span></h3>
+                <h6 class="text-muted">Phonetics: {{phonetics}}</h6>
+            </div>
+            <div>
+                <audio id="player" src="{{audio}}"></audio>
+                <button class="btn btn-outline-primary rounded-circle" onclick="document.getElementById('player').play()">
+                    <i class="fa fa-volume-up fa-lg"></i>
+                </button>
+            </div>
+        </div>
+        <hr>
+        <div class="mb-3">
+            <h5 class="text-secondary">📚 Definition:</h5>
+            <p class="fs-5">{{definition}}</p>
+        </div>
+        <div class="mb-3">
+            <h5 class="text-secondary">💡 Example:</h5>
+            <p class="fs-5 fst-italic text-dark">{{example}}</p>
+        </div>
+        <div>
+            <h5 class="text-secondary">🔁 Synonyms:</h5>
+            <p class="fs-5">
+                {% for synonym in synonyms %}
+                    {{synonym}}
+                {% endfor %}
+            </p>
+        </div>
+        {% else %}
+        <div class="text-center text-danger mt-4">
+            <h4>⚠️ Sorry, API request limit exceeded</h4>
+        </div>
+    {% endif %}
+    </div>
+</section>
+
+<style>
+    .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+        transition: all 0.3s ease-in-out;
+    }
+
+    input[type="text"]:focus {
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        border-color: #0d6efd;
+    }
+</style>
+
+{% endblock content %}

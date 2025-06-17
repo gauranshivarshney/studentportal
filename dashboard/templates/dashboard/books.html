@@ -1,0 +1,90 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block content %}
+
+<style>
+    book {
+        color: #5C4E4E;
+    }
+</style>
+
+<section class="container py-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold book">📚 Discover & Explore Books</h2>
+        <p class="text-muted fs-5">Enter a keyword to find your next favorite read</p>
+    </div>
+    <form method="post" class="row justify-content-center mb-5">
+        {% csrf_token %}
+        <div class="col-md-6">
+            <div class="input-group">
+                {{form.text|add_class:"form-control rounded-start-pill px-4 py-2 shadow-sm"}}
+                <button type="submit" class="btn btn-danger rounded-end-pill px-4">Search</button>
+            </div>
+        </div>
+    </form>
+    {% if results %}
+        {% for result in results %}
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-10">
+                <a href="{{ result.preview }}" class="text-decoration-none text-dark" target="_blank">
+                    <div class="card shadow-sm border-0 rounded-4 hover-shadow transition-all">
+                        <div class="row g-0">
+                            {% if result.thumbnail %}
+                            <div class="col-md-3">
+                                <img src="{{ result.thumbnail }}" class="img-fluid rounded-start object-fit-cover h-100" alt="Book Cover">
+                            </div>
+                            {% endif %}
+                            <div class="col-md-9 p-4">
+                                <h3 class="fw-bold mb-2">{{ result.title }}</h3>
+                                {% if result.subtitle %}
+                                <h5 class="text-secondary mb-3"><u>{{ result.subtitle }}</u></h5>
+                                {% endif %}
+                                {% if result.description %}
+                                <p class="text-muted">{{ result.description|truncatewords:30 }}</p>
+                                {% endif %}
+                                <div class="row text-muted mt-3">
+                                    {% if result.categories %}
+                                    <div class="col-md-4 mb-2">
+                                        <strong>Category:</strong><br>
+                                        {{ result.categories|join:", " }}
+                                    </div>
+                                    {% endif %}
+                                    {% if result.count %}
+                                    <div class="col-md-4 mb-2">
+                                        <strong>Pages:</strong> {{ result.count }}
+                                    </div>
+                                    {% endif %}
+                                    {% if result.rating %}
+                                    <div class="col-md-4 mb-2">
+                                        <strong>Rating:</strong> ⭐ {{ result.rating }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    {% elif form.text.value %}
+        <div class="text-center text-muted">No results found for "{{ form.text.value }}"</div>
+    {% endif %}
+</section>
+
+<style>
+    .hover-shadow:hover {
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+        transform: translateY(-4px);
+        transition: all 0.3s ease-in-out;
+    }
+    .object-fit-cover {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+    }
+</style>
+
+{% endblock content %}
