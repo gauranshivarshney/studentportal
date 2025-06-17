@@ -4,7 +4,9 @@ A comprehensive web-based **Student Study Portal** built using Django that helps
 
 ---
 
-# Deployed Link: https://studentportal-g9r0.onrender.com/
+## 🔗 Live Demo
+
+[👉 View Link ](https://studentportal-g9r0.onrender.com/)
 
 ---
 
