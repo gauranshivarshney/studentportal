@@ -4,6 +4,12 @@ A comprehensive web-based **Student Study Portal** built using Django that helps
 
 ---
 
+## 🔗 Live Demo
+
+[👉 View Link ](https://studentportal-g9r0.onrender.com/)
+
+---
+
 ## 🌐 Features
 
 - 🔐 **Authentication**: User **Register**, **Login**, and **Logout**
@@ -49,3 +55,65 @@ A comprehensive web-based **Student Study Portal** built using Django that helps
 | External APIs| Google Books, Dictionary, Wikipedia     |
 
 ---
+
+## Screenshots
+
+To provide a better understanding of the Student Study Portal application, here is a screenshot:
+
+##Home Interface
+
+![Home Interface](screenshots/home1.png)
+
+![Home Interface](screenshots/home2.png)
+
+##Profile Interface
+
+![Profile Interface](screenshots/profile.png)
+
+##Register Interface
+
+![Register Interface](screenshots/register1.png)
+
+![Register Interface](screenshots/register2.png)
+
+##Login Interface
+
+![Login Interface](screenshots/login.png)
+
+##User Interface
+
+![User Interface](screenshots/user_home1.png)
+
+![User Interface](screenshots/user_home2.png)
+
+##Notes Interface
+
+![Notes Interface](screenshots/notes1.png)
+
+![Notes Interface](screenshots/notes2.png)
+
+##Homework Interface
+
+![Homework Interface](screenshots/homework1.png)
+
+![Homework Interface](screenshots/homework2.png)
+
+##Todo Interface
+
+![Todo Interface](screenshots/todo.png)
+
+##Books Interface
+
+![Books Interface](screenshots/book1.png)
+
+![Books Interface](screenshots/book2.png)
+
+##Dictionary Interface
+
+![Dictionary Interface](screenshots/dict.png)
+
+##Wikipedia Interface
+
+![Wikipedia Interface](screenshots/wiki1.png)
+
+![Wikipedia Interface](screenshots/wiki2.png)
